@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Exam Builder - Home Page</title>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px 15px 5px 15px;
+}
+</style>
+</head>
+<body>
+	<h1>Exam Builder</h1>
+	<br>
+	<button type="button" onclick="location.href = '/ExamBuilderService/createTest';">Create Test</button>
+	<br><br>
+	<table style="width:50%">
+		<tr>
+			<th width="80%">Test Name</th>
+			<th width="20%">Action</th>
+		</tr>
+		<tr th:each="test : ${tests}">
+			<td><a th:href="@{/viewTest/{id}(id=${test.id})}" th:text="${test.name}">Spring Test</a></td>
+			<td><a th:href="@{/takeTest/{id}(id=${test.id})}">Take Test</a></td>
+		</tr>
+	</table>
+</body>
+</html>

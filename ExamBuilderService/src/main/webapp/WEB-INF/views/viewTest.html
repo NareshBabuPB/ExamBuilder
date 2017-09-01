@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>View Test</title>
+<style>
+th, td {
+    padding: 5px 15px 5px 15px;
+}
+</style>
+</head>
+<body>
+	<h3 th:text="${test.name}">Spring Test</h3>
+	<br>
+	<input type="button" value="back" onclick="location.href = '/ExamBuilderService';"/>
+	<br>
+	<table style="width:80%">
+		<tr th:each="question,iterationStatus : ${test.questions}">
+			<td width="5%" th:text="${iterationStatus.count}">1.</td>
+			<td width="95%">
+				<table>
+					<tr>
+						<td colspan="2" th:text="${question.description}">Choose the Java keyword.</td>
+					</tr>
+					<tr>
+						<td width="5%">A.</td>
+						<td width="95%" th:text="${question.choiceA}">Serialization</td>
+					</tr>
+					<tr>
+						<td>B.</td>
+						<td th:text="${question.choiceB}">Normalize</td>
+					</tr>
+					<tr>
+						<td>C.</td>
+						<td th:text="${question.choiceC}">temp</td>
+					</tr>
+					<tr>
+						<td>D.</td>
+						<td th:text="${question.choiceD}">static</td>
+					</tr>
+					<tr height="10px"></tr>
+					<tr>
+						<td colspan="2">Answer: &nbsp;&nbsp; <span th:text="${question.correctAnswer}">D</span></td>
+					</tr>
+				</table>
+			</td>	
+		</tr>
+	</table>
+	<br>
+	<input type="button" value="back" onclick="location.href = '/ExamBuilderService';"/>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>User Registration</title>
+</head>
+<body>
+<h1>Registration Form</h1>
+<form action="/ExamBuilderService/user/registration" th:object="${user}" method="post">
+<table>
+<tr>
+	<td><label>First Name: </label></td>
+	<td>
+		<input th:field="*{firstName}" />
+	</td>
+	<td>
+		<p th:each="error: ${#fields.errors('firstName')}"
+          th:text="${error}">Validation error</p>
+	</td>
+</tr>
+<tr>
+	<td><label>Last Name: </label></td>
+	<td>
+		<input th:field="*{lastName}" />
+	</td>
+	<td>
+		<p th:each="error: ${#fields.errors('lastName')}"
+          th:text="${error}">Validation error</p>
+	</td>
+</tr>
+<tr>
+	<td><label>Email: </label></td>
+	<td>
+		<input type="email" th:field="*{email}" />
+	</td>
+	<td>
+		<p th:each="error: ${#fields.errors('email')}"
+          th:text="${error}">Validation error</p>
+	</td>
+</tr>
+<tr>
+	<td><label>User Name: </label></td>
+	<td>
+		<input th:field="*{username}" />
+	</td>
+	<td>
+		<p th:each="error: ${#fields.errors('username')}"
+          th:text="${error}">Validation error</p>
+	</td>
+</tr>
+<tr>
+	<td><label>Password: </label></td>
+	<td>
+		<input type="password" th:field="*{password}" />
+	</td>
+	<td>
+		<p th:each="error: ${#fields.errors('password')}"
+          th:text="${error}">Validation error</p>
+	</td>
+</tr>
+<tr>
+	<td><label>Confirm Password: </label></td>
+	<td><input type="password" th:field="*{confirmPassword}" /></td>
+	<td/>
+</tr>
+<tr>
+	<td/>
+	<td><button type="submit" th:text="Submit">submit</button></td>
+	<td/>
+</tr>
+</table>
+</form>
+</body>
+</html>

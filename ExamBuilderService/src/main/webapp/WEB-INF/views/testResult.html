@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Test Results</title>
+</head>
+<body>
+
+<h1 th:if="${passed}"> Congratulations!!! you cleared the test.</h1>
+<h1 th:unless="${passed}"> Sorry you did not clear the test. Please talk to your examiner.</h1>
+</body>
+</html>

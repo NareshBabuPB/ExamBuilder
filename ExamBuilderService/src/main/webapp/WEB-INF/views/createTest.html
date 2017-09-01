@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Create Test</title>
+<style>
+th, td {
+    padding: 5px 15px 5px 15px;
+}
+</style>
+</head>
+<body>
+
+	<div>
+		<h2>Create Test</h2>
+	</div>
+
+	<div>
+		<form method="POST" enctype="multipart/form-data" th:object="${test}" action="/ExamBuilderService/saveTest">
+			<table>
+				<tr>
+					<td>Test Name: </td>
+					<td><input type="text" th:field="*{name}" /></td>
+					<td>
+						<p th:each="error: ${#fields.errors('name')}"
+				          th:text="${error}">Validation error</p>
+					</td>
+				</tr>
+				<tr>
+					<td>File to upload:</td>
+					<td>
+						<input style="width: 45%" type="file" name="uploadedQuestions" />
+						<a th:href="@{/downloadTemplate}" target="blank">
+							<img src="/ExamBuilderService/resources/csv-icon.jpg" alt="Question Template" width="5%" height="10%"/>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>Test Duration: </td>
+					<td><input type="number"  th:field="*{durationMinutes}" /></td>
+					<td>
+						<p th:each="error: ${#fields.errors('durationMinutes')}"
+				          th:text="${error}">Validation error</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Pass Score%: </td>
+					<td><input type="text" th:field="*{passScore}" /></td>
+					<td>
+						<p th:each="error: ${#fields.errors('passScore')}"
+				          th:text="${error}">Validation error</p>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="button" value="Cancel"  onclick="location.href = '/ExamBuilderService';"/></td>
+					<td><input type="submit" value="Create Test" /></td></tr>
+			</table>
+		</form>
+	</div>
+
+</body>
+</html>
