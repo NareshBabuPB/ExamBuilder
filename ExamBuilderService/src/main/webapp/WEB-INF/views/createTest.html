@@ -1,16 +1,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="pageLayout :: commonHead(~{::title}, ~{})">
 <title>Create Test</title>
-<style>
-th, td {
-    padding: 5px 15px 5px 15px;
-}
-</style>
 </head>
-<body>
+<body th:replace="pageLayout :: commonBody(~{:: #main_container})">
+
+<div id="main_container">
 
 	<div>
-		<h2>Create Test</h2>
+		<h2 id="main_container_header">Create Test</h2>
 	</div>
 
 	<div>
@@ -29,7 +26,7 @@ th, td {
 					<td>
 						<input style="width: 45%" type="file" name="uploadedQuestions" />
 						<a th:href="@{/downloadTemplate}" target="blank">
-							<img src="/ExamBuilderService/resources/csv-icon.jpg" alt="Question Template" width="5%" height="10%"/>
+							<img src="../resources/images/csv-icon.jpg" th:src="@{/resources/images/csv-icon.jpg}" alt="Question Template" width="5%" height="10%"/>
 						</a>
 					</td>
 				</tr>
@@ -55,6 +52,6 @@ th, td {
 			</table>
 		</form>
 	</div>
-
+</div>
 </body>
 </html>

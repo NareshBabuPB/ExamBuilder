@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
+<head th:replace="pageLayout :: commonHead(~{::title}, ~{})">
 <title>Test Results</title>
 </head>
-<body>
+<body th:replace="pageLayout :: commonBody(~{:: #main_container})">
 
-<h1 th:if="${passed}"> Congratulations!!! you cleared the test.</h1>
-<h1 th:unless="${passed}"> Sorry you did not clear the test. Please talk to your examiner.</h1>
+	<div id="main_container">
+
+		<div>
+			<h2 id="main_container_header">Test Report</h2>
+		</div>
+
+		<div>
+			<h1 th:if="${passed}">Congratulations!!! you cleared the test.</h1>
+			<h1 th:unless="${passed}">Sorry you did not clear the test.
+				Please talk to your examiner.</h1>
+		</div>
+
+	</div>
 </body>
 </html>

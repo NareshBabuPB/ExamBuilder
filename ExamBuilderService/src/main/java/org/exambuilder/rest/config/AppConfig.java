@@ -1,5 +1,8 @@
 package org.exambuilder.rest.config;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.exambuilder.rest.component.InitialContextLoader;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.thymeleaf.dialect.IDialect;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
@@ -56,6 +61,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	public SpringTemplateEngine templateEngine() {
 		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
 		templateEngine.setTemplateResolver(thymeleafTemplateResolver());
+		
+		Set<IDialect> dialects = new HashSet<>();
+		dialects.add(thymeleafSpringSecurityDialect());
+		templateEngine.setAdditionalDialects(dialects);
+		
 		return templateEngine;
 	}
 	
@@ -67,6 +77,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		resolver.setTemplateMode("HTML5");
 		
 		return resolver;
+	}
+	
+	@Bean
+	public SpringSecurityDialect thymeleafSpringSecurityDialect() {
+		return new SpringSecurityDialect();
 	}
 	
 	@Bean

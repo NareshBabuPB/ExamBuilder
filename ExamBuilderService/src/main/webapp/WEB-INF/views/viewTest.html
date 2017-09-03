@@ -1,14 +1,13 @@
-<html>
-<head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="pageLayout :: commonHead(~{::title}, ~{})">
 <title>View Test</title>
-<style>
-th, td {
-    padding: 5px 15px 5px 15px;
-}
-</style>
 </head>
-<body>
-	<h3 th:text="${test.name}">Spring Test</h3>
+
+<body th:replace="pageLayout :: commonBody(~{:: #main_container})">
+
+<div id="main_container">
+	
+	<h3 id="main_container_header" th:text="${test.name}">Spring Test</h3>
 	<br>
 	<input type="button" value="back" onclick="location.href = '/ExamBuilderService';"/>
 	<br>
@@ -46,5 +45,7 @@ th, td {
 	</table>
 	<br>
 	<input type="button" value="back" onclick="location.href = '/ExamBuilderService';"/>
+	
+</div>
 </body>
 </html>

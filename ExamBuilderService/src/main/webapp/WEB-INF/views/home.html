@@ -1,30 +1,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Exam Builder - Home Page</title>
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px 15px 5px 15px;
-}
-</style>
+<head th:replace="pageLayout :: commonHead(~{::title}, ~{})">
+	<title>Exam Builder - Home Page</title>
 </head>
-<body>
-	<h1>Exam Builder</h1>
-	<br>
-	<button type="button" onclick="location.href = '/ExamBuilderService/createTest';">Create Test</button>
-	<br><br>
-	<table style="width:50%">
-		<tr>
-			<th width="80%">Test Name</th>
-			<th width="20%">Action</th>
-		</tr>
-		<tr th:each="test : ${tests}">
-			<td><a th:href="@{/viewTest/{id}(id=${test.id})}" th:text="${test.name}">Spring Test</a></td>
-			<td><a th:href="@{/takeTest/{id}(id=${test.id})}">Take Test</a></td>
-		</tr>
-	</table>
+<body th:replace="pageLayout :: commonBody(~{:: #main_container})">
+
+	<div id="main_container">
+		<h1 id="main_container_header">Home page</h1>
+		<br>
+		<button type="button" class="btn_01"
+			onclick="location.href = '/ExamBuilderService/createTest';">
+			Create Test
+		</button>
+		<br>
+		<br>
+		<table style="width: 50%">
+			<tr>
+				<th width="80%">Test Name</th>
+				<th width="20%">Action</th>
+			</tr>
+			<tr th:each="test : ${tests}">
+				<td><a href="viewTest.html" th:href="@{/viewTest/{id}(id=${test.id})}"
+					th:text="${test.name}">Spring Test</a></td>
+				<td><a href="takeTest.html" th:href="@{/takeTest/{id}(id=${test.id})}">Take Test</a></td>
+			</tr>
+		</table>
+
+	</div>
+
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>User Registration</title>
@@ -45,7 +45,7 @@
 	</td>
 	<td>
 		<p th:each="error: ${#fields.errors('username')}"
-          th:text="${error}">Validation error</p>
+          th:text="${error}">Validation Error</p>
 	</td>
 </tr>
 <tr>

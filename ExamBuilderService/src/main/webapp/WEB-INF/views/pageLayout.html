@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="commonHead(title, links)">
+<meta charset="ISO-8859-1">
+<title th:replace="${title}">Page Title</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../resources/css/app_style.css" th:href="@{/resources/css/app_style.css}" rel="stylesheet" type="text/css" />
+
+</head>
+<body th:fragment="commonBody(mainContent)">
+
+<div id="template_header_wrapper">
+
+	<div id="template_header">
+    
+   		<div id="site_title">
+            <h1><a href="home.html" th:href="@{/}" target="_parent">
+            	Exam Builder
+            </a></h1>
+        </div>
+        
+         <div id="template_menu">
+            <ul>
+                <li><a href="#" target="_parent" th:text="${#authentication.getPrincipal().getUsername()}">User Name</a></li>
+            </ul>    	
+        </div> <!-- end of template_menu -->
+        
+    </div> <!-- end of template_header -->
+
+</div> 
+<!-- end of template_header_wrapper -->
+
+<div th:replace="${mainContent}"></div>
+
+<div id="template_footer">
+
+	<div id="template_footer_copy">&copy 2017 &nbsp; The Exam Builder Application.</div>
+</div>
+
+</body>
+</html>
