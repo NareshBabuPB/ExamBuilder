@@ -1,17 +1,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="pageLayout :: commonHead(~{::title}, ~{})">
+<head th:replace="pageLayout :: commonHead(~{::title}, ~{::link})">
 <title>View Test</title>
+<link href="../resources/css/home.css" th:href="@{/resources/css/viewExam.css}" rel="stylesheet" type="text/css" />
 </head>
 
 <body th:replace="pageLayout :: commonBody(~{:: #main_container})">
 
 <div id="main_container">
 	
-	<h3 id="main_container_header" th:text="${test.name}">Spring Test</h3>
+	<section class="exams-details">
+		<h2 id="main_container_header" th:text="${test.name}">Spring Test</h2>
+		<label>
+			<span th:text="${test.durationMinutes}">30</span> minutes
+			<!-- <span class="tooltiptext">Exam duration</span> -->
+		</label>
+	</section>
 	<br>
-	<input type="button" value="back" onclick="location.href = '/ExamBuilderService';"/>
+	<input type="button" class="btn_01_small" value="back" onclick="location.href = '/ExamBuilderService';"/>
 	<br>
-	<table style="width:80%">
+	<table class="exam-questions">
 		<tr th:each="question,iterationStatus : ${test.questions}">
 			<td width="5%" th:text="${iterationStatus.count}">1.</td>
 			<td width="95%">
@@ -44,7 +51,7 @@
 		</tr>
 	</table>
 	<br>
-	<input type="button" value="back" onclick="location.href = '/ExamBuilderService';"/>
+	<input type="button" class="btn_01_small" value="back" onclick="location.href = '/ExamBuilderService';"/>
 	
 </div>
 </body>

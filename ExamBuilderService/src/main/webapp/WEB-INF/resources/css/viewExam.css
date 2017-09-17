@@ -1,0 +1,17 @@
+.exam-details{
+	width: 80%;
+	margin: 0 auto;
+}
+
+.exam-questions {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.exam-questions tr:nth-child(odd) {
+	background-color: #e9e9e9;
+}
+
+.btn_01 {
+	margin-left: 20%;
+}

@@ -1,16 +1,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="pageLayout :: commonHead(~{::title}, ~{})">
+<head th:replace="pageLayout :: commonHead(~{::title}, ~{::link})">
 <title>Create Test</title>
+<link href="../resources/css/home.css" th:href="@{/resources/css/createExam.css}" rel="stylesheet" type="text/css" />
 </head>
 <body th:replace="pageLayout :: commonBody(~{:: #main_container})">
 
 <div id="main_container">
 
 	<div>
-		<h2 id="main_container_header">Create Test</h2>
+		<h1 id="main_container_header">Create Test</h1>
 	</div>
 
-	<div>
+	<section class="create-exam-wrapper">
 		<form method="POST" enctype="multipart/form-data" th:object="${test}" action="/ExamBuilderService/saveTest">
 			<table>
 				<tr>
@@ -24,7 +25,7 @@
 				<tr>
 					<td>File to upload:</td>
 					<td>
-						<input style="width: 45%" type="file" name="uploadedQuestions" />
+						<input style="width: 45%" class="btn_01_small" type="file" name="uploadedQuestions" />
 						<a th:href="@{/downloadTemplate}" target="blank">
 							<img src="../resources/images/csv-icon.jpg" th:src="@{/resources/images/csv-icon.jpg}" alt="Question Template" width="5%" height="10%"/>
 						</a>
@@ -47,11 +48,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td><input type="button" value="Cancel"  onclick="location.href = '/ExamBuilderService';"/></td>
-					<td><input type="submit" value="Create Test" /></td></tr>
+					<td><input type="button" class="btn_01_small" value="Cancel"  onclick="location.href = '/ExamBuilderService';"/></td>
+					<td><input type="submit" class="btn_01_small" value="Create Test" /></td></tr>
 			</table>
 		</form>
-	</div>
+	</section>
 </div>
 </body>
 </html>
